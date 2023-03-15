@@ -13,40 +13,54 @@
 </head>
 
 <body>
-  <div class="container-fluid border w-25 text-center p-0">
-    <h1>Score Keeper</h1>
-    <img class="img-fluid w-100" src="https://images.unsplash.com/photo-1581574919402-5b7d733224d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80">
-    <div class="row">
+  <div class="container-fluid border w-25 text-center p-0 my-5" id="main">
+    <h1>Dart score keeper</h1>
+    <img class="img-fluid w-100" src="https://images.unsplash.com/photo-1620160165083-909ed50dee7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
+    <form id="info">
+      <div class="row border-bottom p-3 m-0 justify-content-around" style="align-items: center">
+        <div class="col p-2">
+          <input type="text" class="form-control mb-2" id="player1Name" placeholder="First player's name" maxlength="10" required>
+          <input type="text" class="form-control" id="player2Name" placeholder="Second player's name" maxlenght="10" required>
+        </div>
+        <div class="col p-2">
+          <select class="form-select mb-2" id="gameType" required>
+            <option selected value="">Select game type</option>
+            <option value="101">101</option>
+            <option value="301">301</option>
+            <option value="501">501</option>
+            <option value="701">701</option>
+            <option value="1001">1001</option>
+          </select>
+          <button type="submit" id="start" class="btn btn-outline-secondary w-100">Start game</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="row p-4">
       <div class="col border-end">
-        <h2>Player 1</h2>
-        <h3>0</h3>
+        <h2 class="fs-3" id="player1">Player 1</h2>
+        <h3 id="score1">0</h3>
       </div>
       <div class="col">
-        <h2>Player 2</h2>
-        <h3>0</h3>
-      </div>
-    </div>
-    <div class="row border-top m-0 p-2">
-      <div class="col">
-        <label for="maxScore" class=>Play to</label>
-        <input type="number" class="form-control form-control-sm w-25  ms-2" style="display:inline-block" id="maxScore">
+        <h2 class="fs-3" id="player2">Player 2</h2>
+        <h3 id="score2">0</h3>
       </div>
     </div>
     <div class="row m-0 p-0">
       <div class="col p-0 m-0">
-        <button class="btn btn-primary w-100 rounded-0">Player 1</button>
+        <button class="btn btn-primary w-100 rounded-0" id="addPlayer1" disabled>Player 1</button>
       </div>
       <div class="col p-0 m-0">
-        <button class="btn btn-danger w-100 rounded-0">Player 2</button>
+        <button class="btn btn-danger w-100 rounded-0" id="addPlayer2" disabled>Player 2</button>
       </div>
       <div class="col p-0 m-0">
-        <button class="btn btn-success w-100 rounded-0">Reset</button>
+        <button class="btn btn-success w-100 rounded-0" id="reset">Reset</button>
       </div>
     </div>
     </div>
   </div>
 
-
+  <script src=app.js></script>
 </body>
 
 </html>
