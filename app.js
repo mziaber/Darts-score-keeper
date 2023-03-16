@@ -33,6 +33,9 @@ reset.addEventListener('click', () => {
     add1.disabled = true;
     add2.disabled = true;
     remove_num();
+    if (document.contains(document.querySelector("#winner"))) {
+        document.querySelector("#winner").remove();
+    }
 });
 
 add1.addEventListener('click', () => {
@@ -59,11 +62,11 @@ formParent.addEventListener('submit', (e) => {
         const scoreNum = document.querySelector('#points > input');
         if (scoreNum.id === 'scoreNum1') {
             let new_score = parseInt(score1.innerText);
-            update_score(score1, scoreNum, new_score);
+            update_score(score1, scoreNum, new_score, name1.innerText);
         }
         if (scoreNum.id === 'scoreNum2') {
             let new_score = parseInt(score2.innerText);
-            update_score(score2, scoreNum, new_score);
+            update_score(score2, scoreNum, new_score, name2.innerText);
         }
         remove_num();
     }
@@ -76,9 +79,10 @@ function remove_num() {
 }
 
 function addScores(name, n) {
-    newRow = document.createElement('row');
-    newRow.setAttribute("id", `score_row`);
-    newRow.innerHTML = "<form id='points'><span>" + name + " scores: </span><input class='form-control w-25 m-auto my-2' id='scoreNum" + n + "'type='number'></input><button class='btn btn-secondary'>Submit</button></form>";
+    const newRow = document.createElement("row");
+    newRow.setAttribute("id", "score_row");
+    newRow.setAttribute("class","p-2")
+    newRow.innerHTML = "<form id='points'><span>" + name + " scores: </span><input class='form-control w-25 m-auto my-2' id='scoreNum" + n + "'type='number' required></input><button class='btn btn-secondary'>Submit</button></form>";
     document.querySelector("#main").appendChild(newRow);
 }
 
@@ -91,13 +95,21 @@ function check(name, playerName, n) {
     }
 }
 
-function update_score(score, score_num, new_score) {
+function update_score(score, score_num, new_score, player) {
     new_score -= score_num.valueAsNumber;
     if (new_score > 0 && new_score != 1) {
         score.innerText = new_score;
     } else if (new_score === 0) {
-        alert('End of game')
-        document.querySelector("#reset").click()
+        score.innerText = new_score;
+        const new_elem = document.createElement('h1');
+        new_elem.setAttribute('id', 'animete');
+        new_elem.classList.add('mt-5', 'text-center');
+        new_elem.innerHTML = "<span id='winner' style='font-size: 3em; color: #343a40; text-shadow: 0px 0px 6px #ccff33, 0px 0px 6px #38b000'>"+player+" wins!</span>";
+        document.querySelector('body').appendChild(new_elem);
+        add1.disabled = true;
+        add2.disabled = true;
+
+    
     } else {
         alert('To much points!');
 
