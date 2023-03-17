@@ -80,7 +80,7 @@ function update_score(player, score) {
         player.score.innerText = new_score;
         const new_elem = document.createElement('h1');
         new_elem.setAttribute('id', 'animete');
-        new_elem.classList.add('mt-5', 'text-center');
+        new_elem.classList.add('mt-3', 'text-center');
         new_elem.innerHTML = "<span id='winner' style='font-size: 3em; color: #343a40; text-shadow: 0px 0px 6px #ccff33, 0px 0px 6px #38b000'>"+player.name.innerText+" wins!</span>";
         document.querySelector('body').appendChild(new_elem);
         player1.addButton.disabled = true;
