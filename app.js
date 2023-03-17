@@ -31,7 +31,7 @@ gameInfo.addEventListener('submit', (e) => {
 reset.addEventListener('click', () => {
     gameInfo.reset();
     for (let player of players){
-        player.score = 0;
+        player.score.innerText = 0;
         player.name.innerText = `Player ${player.num}`
         player.addButton.disabled = true;
     }
