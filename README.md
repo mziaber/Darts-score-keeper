@@ -1,4 +1,4 @@
-# Cake recipes
+# Dart score counter
 
 Simple web app for tracking the score of Dart game.
 
